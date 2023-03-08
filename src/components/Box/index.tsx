@@ -1,7 +1,11 @@
 import React, { FC, PropsWithChildren } from "react";
 
-const Box: FC<PropsWithChildren> = ({ children }) => {
-  return <div>{children}</div>;
+interface Props extends PropsWithChildren {
+  color: string;
+}
+
+const Box: FC<Props> = ({ children, color }) => {
+  return <div style={{ color }}>{children}</div>;
 };
 
 export default Box;

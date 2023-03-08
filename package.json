@@ -1,12 +1,13 @@
 {
   "name": "@mostafa-aly25/react-package",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf dist",
     "copy": "cp package.json dist/ && cp README.md dist/",
     "build": "tsc",
-    "prepare-build": "npm run clean && npm run build && npm run copy"
+    "prepare-build": "npm run clean && npm run build && npm run copy",
+    "prepare-publish": "npm run prepare-build && cd dist && npm publish"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"

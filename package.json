@@ -1,26 +1,27 @@
 {
   "name": "@mostafa-aly25/react-package",
-  "version": "1.0.2",
-  "main": "index.js",
-  "scripts": {
-    "clean": "rm -rf dist",
-    "copy": "cp package.json dist/ && cp README.md dist/",
-    "build": "tsc",
-    "prepare-build": "npm run clean && npm run build && npm run copy",
-    "prepare-publish": "npm run prepare-build && cd dist && npm publish"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
+  "version": "1.0.5",
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
+  "types": "./esm/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mostafa-aly25/react-package.git"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "scripts": {
+    "clean": "rm -rf dist",
+    "copy": "cp package.json dist/ && cp README.md dist/",
+    "build": "yarn build:esm && yarn build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "prepare-build": "npm run clean && npm run build && npm run copy",
+    "prepare-publish": "npm run prepare-build && cd dist && npm publish"
   },
   "peerDependencies": {
     "react": ">=16"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "keywords": [],
   "author": "",
@@ -32,7 +33,6 @@
     "react-dom": "^18.2.0",
     "typescript": "^4.9.5"
   },
-  "dependencies": {},
   "bugs": {
     "url": "https://github.com/mostafa-aly25/react-package/issues"
   },
